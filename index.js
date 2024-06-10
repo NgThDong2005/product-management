@@ -6,11 +6,14 @@ database.connect();
 
 const routeAdmin =  require("./routes/admin/index.route");
 const routeClient = require("./routes/client/index.route");
+const systemConfig = require("./config/system");
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(express.static('public'));
+
+app.locals.prefixAmin = systemConfig.prefixAdmin;
 
 app.set("views", "./views"); // thêm thư mục views
 app.set("view engine", "pug"); // định nghĩa template engine là pug
