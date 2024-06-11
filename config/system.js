@@ -1,3 +1,3 @@
 module.exports = {
-    prefixAdmin: "admin111"
+    prefixAdmin: "admin"
 };
