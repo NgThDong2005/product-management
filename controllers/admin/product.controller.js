@@ -2,7 +2,7 @@ const Product = require("../../models/product.model");
 
 const paginationHelper = require("../../helpers/pagination.helper");
 
-// [GET] /admin/products/
+// [PATCH] /admin/products/
 module.exports.index = async (req, res) => {
     const find = {
       deleted: false
@@ -62,5 +62,7 @@ module.exports.changeStatus = async (req, res) => {
         status: statusChange
     });
 
-    res.redirect('back');
+    res.json({
+        code: 200
+    });
 }
