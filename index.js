@@ -11,12 +11,12 @@ const systemConfig = require("./config/system");
 const app = express();
 const port = process.env.PORT;
 
-app.use(express.static('public'));
-
-app.locals.prefixAmin = systemConfig.prefixAdmin;
-
 app.set("views", "./views"); // thêm thư mục views
 app.set("view engine", "pug"); // định nghĩa template engine là pug
+
+app.use(express.static('public'));
+
+app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 routeAdmin.index(app);
 routeClient.index(app);

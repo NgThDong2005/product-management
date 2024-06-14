@@ -2,31 +2,31 @@ const Product = require("../../models/product.model");
 
 const paginationHelper = require("../../helpers/pagination.helper");
 
-//[GET]  /admin/product/
+// [GET] /admin/products/
 module.exports.index = async (req, res) => {
     const find = {
-        deleted: false
+      deleted: false
     };
-
+  
     const filterStatus = [
-        {
-          label: "Tất cả",
-          value: ""
-        },
-        {
-          label: "Hoạt động",
-          value: "active"
-        },
-        {
-          label: "Dừng hoạt động",
-          value: "inactive"
-        },
+      {
+        label: "Tất cả",
+        value: ""
+      },
+      {
+        label: "Hoạt động",
+        value: "active"
+      },
+      {
+        label: "Dừng hoạt động",
+        value: "inactive"
+      },
     ];
-    
+  
     if(req.query.status) {
-        find.status = req.query.status;
+      find.status = req.query.status;
     }
-
+  
     //Tìm kiếm 
     let keyword = "";
     if(req.query.keyword) {
@@ -52,4 +52,15 @@ module.exports.index = async (req, res) => {
     });
 }
 
+// [GET] /admin/products/change-status/:statusChange/:id
+module.exports.changeStatus = async (req, res) => {
+    const {id, statusChange} = req.params;
 
+    await Product.updateOne({
+        _id: id
+    },{
+        status: statusChange
+    });
+
+    res.redirect('back');
+}

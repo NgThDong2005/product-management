@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const controllerProduct = require("../../controllers/admin/product.controller");
+const controller = require("../../controllers/admin/product.controller");
 
-router.get("/", controllerProduct.index);
+router.get("/", controller.index);
+
+router.get("/change-status/:statusChange/:id", controller.changeStatus);
 
 module.exports = router;
