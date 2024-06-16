@@ -65,6 +65,8 @@ module.exports.changeStatus = async (req, res) => {
         status: statusChange
     });
 
+    req.flash('success', 'Cập nhật trạng thái thành công!');
+    
     res.json({
         code: 200
     });
