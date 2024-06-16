@@ -178,3 +178,29 @@ if(listButtonDelete.length > 0) {
   });
 }
 // End Delete Document
+
+// Change Position
+const listInputPosition = document.querySelectorAll("input[name='position']");
+if(listInputPosition.length > 0) {
+  listInputPosition.forEach(input => {
+    input.addEventListener("change", () => {
+      const link = input.getAttribute("link");
+      const position = parseInt(input.value);
+
+      fetch(link, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          position: position
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
+    });
+  })
+}
+// End Change Position
