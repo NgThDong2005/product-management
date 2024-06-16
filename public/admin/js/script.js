@@ -88,7 +88,6 @@ if(listButtonChangeStatus.length > 0) {
 }
 // End Button Change Status
 
-// End Button Change Status
 
 // Check Item
 const inputCheckAll = document.querySelector("input[name='checkAll']");
@@ -169,7 +168,7 @@ if(listButtonDelete.length > 0) {
       console.log(id);
 
       fetch(`/admin/products/delete/${id}`, {
-        method: "DELETE"
+        method: "PATCH"
       })
         .then(res => res.json())
         .then(data => {
